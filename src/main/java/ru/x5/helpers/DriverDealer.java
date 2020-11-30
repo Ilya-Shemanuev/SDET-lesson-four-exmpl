@@ -1,5 +1,7 @@
 package ru.x5.helpers;
 
+import com.codeborne.selenide.Configuration;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -28,6 +30,7 @@ public class DriverDealer {
      * Здесь можно описать кроссбраузерный зоопарк
      */
     public DriverDealer() {
+        Configuration.browserCapabilities = new MutableCapabilities();
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
     }
