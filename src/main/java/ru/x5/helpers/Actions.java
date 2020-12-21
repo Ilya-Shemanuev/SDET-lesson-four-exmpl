@@ -1,5 +1,6 @@
 package ru.x5.helpers;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -8,6 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * Класс помошник. В нем описаны общие действия
  */
 public class Actions {
+
+    // allure.link.tms.pattern=https://jira.ru/fdhh/{}
 
     /**
      * Приватное финальное поле хранящее экземпляр опаратора драйвера
@@ -30,6 +33,7 @@ public class Actions {
      * Метод принимает уже найденый элемент и кликает на него
      * @param element - заранее найденый элемент
      */
+    @Step("Кликнуть по элементу {element.getText()}")
     public static void click(WebElement element) {
         wait(400);
         element.click();

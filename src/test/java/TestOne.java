@@ -1,4 +1,6 @@
 import com.codeborne.selenide.*;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -16,10 +18,13 @@ public class TestOne {
     @BeforeClass
     public void init() {
         page = new YMarketMainPage();
+
+        SelenideLogger.addListener("AllureSelenide", new
+                AllureSelenide().screenshots(true).savePageSource(false));
     }
 
     @Test
-    public void test1() {
+    public void searchBoxTest() {
         // получаем страницу
         page
                 .getSearchBox()
@@ -34,7 +39,6 @@ public class TestOne {
         open("google.com");
         SelenideElement table = $(By.xpath("//div[@id='main']//img"));
         ElementsCollection rows = table.$$("tr");
-
 
         rows.filterBy(Condition.attribute("sdgh", "1001"));
         rows.get(2).getText();
